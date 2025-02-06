@@ -1,7 +1,7 @@
 import axios from "axios";
 import { DB_USERS_ENDPOINT } from "../constants/constants";
 
-const useUsersDB = () => {
+const useAuthDB = () => {
   //user have props username, email and password
   const signUp = async (user) => {
     try {
@@ -38,4 +38,4 @@ const useUsersDB = () => {
   return { signUp, signIn };
 };
 
-export default useUsersDB;
+export default useAuthDB;
