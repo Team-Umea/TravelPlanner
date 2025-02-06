@@ -5,7 +5,7 @@ import { IoIosArrowRoundForward } from "react-icons/io";
 import AuthForm from "../components/smart-components/AuthForm";
 import useAuthStore from "../hooks/useAuthStore";
 import useAuthDB from "../hooks/useAuthDB";
-import { useNavigate } from "react-router";
+import { NavLink, useNavigate } from "react-router";
 
 export default function SignUpPage() {
   const navigate = useNavigate();
@@ -34,7 +34,13 @@ export default function SignUpPage() {
 
   return (
     <AuthForm headline="Create your account!" onSubmit={handleSubmit}>
-      <FormInput value={user.username} name="username" label="Username" onChange={handleChange} />
+      <FormInput
+        value={user.username}
+        name="username"
+        label="Username"
+        minValue={4}
+        onChange={handleChange}
+      />
       <FormInput
         type="email"
         value={user.email}
@@ -47,6 +53,7 @@ export default function SignUpPage() {
         value={user.password}
         name="password"
         label="Password"
+        minValue={8}
         onChange={handleChange}
       />
       {error && (
@@ -55,6 +62,9 @@ export default function SignUpPage() {
       <div className="mt-4">
         <PrimaryBtn btnText="Sign Up" type="submit" icon={<IoIosArrowRoundForward size={30} />} />
       </div>
+      <NavLink to="/sign-in" className="my-[-10px] text-center text-cyan-400">
+        Already have an account? Sign in here
+      </NavLink>
     </AuthForm>
   );
 }

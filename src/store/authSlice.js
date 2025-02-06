@@ -5,7 +5,15 @@ const initialState = {
   status: "idle",
   error: "",
   isAuthenticated: false,
-  username: JSON.parse(localStorage.getItem(USERNAME_LOCALSTORAGE_KEY)) || "",
+  username: (() => {
+    try {
+      const name = JSON.parse(localStorage.getItem(USERNAME_LOCALSTORAGE_KEY));
+      return name || "";
+    } catch (error) {
+      console.error(error);
+      return "";
+    }
+  })(),
 };
 
 const authSlice = createSlice({
@@ -22,8 +30,10 @@ const authSlice = createSlice({
       state.isAuthenticated = action.payload;
     },
     setUsername(state, action) {
-      state.username = action.payload;
-      localStorage.setItem(USERNAME_LOCALSTORAGE_KEY, action.payload);
+      if (action.payload) {
+        state.username = action.payload;
+        localStorage.setItem(USERNAME_LOCALSTORAGE_KEY, action.payload);
+      }
     },
     clearAuth(state) {
       state.status = "idle";

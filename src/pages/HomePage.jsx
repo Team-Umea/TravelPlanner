@@ -6,7 +6,9 @@ import { IoMdCheckmark } from "react-icons/io";
 import { FaRegTrashCan } from "react-icons/fa6";
 import { IoArrowForwardSharp } from "react-icons/io5";
 import SignUpPage from "./SignUpPage";
+import SignInPage from "./SignInPage";
 
 export default function HomePage() {
-  return <SignUpPage />;
+  // return <SignUpPage />;
+  return <SignInPage />;
 }

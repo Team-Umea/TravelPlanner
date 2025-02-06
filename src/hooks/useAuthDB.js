@@ -37,6 +37,13 @@ const useAuthDB = () => {
         return null;
       }
 
+      if (user.username.length < 4) {
+        console.error("Username must be minimum 8 characters long");
+        updateStatus("error");
+        updateError("Username must be minimum 8 characters long");
+        return null;
+      }
+
       if (user.password.length < 8) {
         console.error("Password must be minimum 8 characters long");
         updateStatus("error");
@@ -65,22 +72,21 @@ const useAuthDB = () => {
       updateStatus("loading");
       updateError("");
 
-      const isEmail = user.includes("@");
+      const isEmail = user.identifier.includes("@");
 
       const response = await axios.get(DB_USERS_ENDPOINT, {
         params: {
-          [isEmail ? "email" : "username"]: user,
+          [isEmail ? "email" : "username"]: user.identifier,
         },
       });
 
-      const userData = response.data;
+      const userData = response.data[0];
 
-      if (userData.length > 0) {
-        const isPasswordValid = await bcrypt.compare(user.password, userData[0].password);
+      if (userData) {
+        const isPasswordValid = await bcrypt.compare(user.password, userData.password);
         if (isPasswordValid) {
-          console.log("User signed in successfully:", userData[0]);
           updateStatus("success");
-          return true;
+          return userData;
         } else {
           console.error("Invalid password");
           updateError("Invalid password");
