@@ -29,7 +29,7 @@ export default function SignInPage() {
 
       updateIsAuthenticated(true);
       updateUsername(response.username);
-      //   navigate("/trips");
+      navigate("/trips");
     }
   };
 
