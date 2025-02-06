@@ -46,7 +46,6 @@ main {
   justify-content: center;
   overflow: hidden;
   color: white;
-  background: linear-gradient(180deg, rgb(101, 135, 143) 0%, rgba(8, 15, 15, 1) 100%);
 }
 
 .page-transtion-container {

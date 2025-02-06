@@ -1,13 +1,40 @@
 import axios from "axios";
+import bcrypt from "bcryptjs";
 import { DB_USERS_ENDPOINT } from "../constants/constants";
+import { generateID } from "../utils/utils";
 
 const useAuthDB = () => {
-  //user have props username, email and password
   const signUp = async (user) => {
     try {
-      const response = await axios.post(DB_USERS_ENDPOINT, user);
+      // Fetch all users
+      const response = await axios.get(DB_USERS_ENDPOINT);
+      const existingUsers = response.data;
+
+      const usernameExists = existingUsers.some(
+        (existingUser) => existingUser.username.toLowerCase() === user.username.toLowerCase()
+      );
+
+      const emailExists = existingUsers.some(
+        (existingUser) => existingUser.email.toLowerCase() === user.email.toLowerCase()
+      );
+
+      if (usernameExists) {
+        console.error("Username already exists!");
+        return;
+      }
+
+      if (emailExists) {
+        console.error("Email already exists!");
+        return;
+      }
+
+      const hashedPassword = await bcrypt.hash(user.password, 10);
+      const newUser = { ...user, password: hashedPassword, id: generateID(existingUsers) };
+
+      const signUpResponse = await axios.post(DB_USERS_ENDPOINT, newUser);
+      console.log("User signed up successfully:", signUpResponse.data);
     } catch (error) {
-      console.error(error);
+      console.error("Error during sign-up:", error);
     }
   };
 
@@ -24,10 +51,15 @@ const useAuthDB = () => {
       const userData = response.data;
 
       if (userData.length > 0) {
-        // User found, handle successful sign-in
+        const isPasswordValid = await bcrypt.compare(user.password, userData[0].password);
+        if (isPasswordValid) {
+          console.log("User signed in successfully:", userData[0]);
+        } else {
+          console.error("Invalid password");
+        }
+
         console.log("User found:", userData);
       } else {
-        // No user found
         console.log("User not found");
       }
     } catch (error) {
