@@ -6,7 +6,6 @@ import { generateID } from "../utils/utils";
 const useAuthDB = () => {
   const signUp = async (user) => {
     try {
-      // Fetch all users
       const response = await axios.get(DB_USERS_ENDPOINT);
       const existingUsers = response.data;
 
