@@ -26,6 +26,10 @@
   display: none;
 }
 
+::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
 * {
   margin: 0;
   padding: 0;

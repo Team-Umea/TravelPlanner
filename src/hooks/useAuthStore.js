@@ -8,7 +8,8 @@ const useAuthStore = (shouldReset) => {
 
   useEffect(() => {
     if (shouldReset) {
-      clearAuth();
+      updateStatus("");
+      updateError("");
     }
   }, []);
 
