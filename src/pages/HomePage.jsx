@@ -11,8 +11,8 @@ export default function HomePage() {
     <div className="home-page">
       <h1 className="home-page-header">Travel Planer</h1>
       <ul className="home-page-contributor-list">
-        <li>OzzoDev</li>
-        <li>Schema</li>
+        <li>ozzoDev</li>
+        <li>shema</li>
         <li>Bigbigboymanboy</li>
       </ul>
       <div className="space-y-2 p-6">
