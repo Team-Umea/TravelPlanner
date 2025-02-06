@@ -25,8 +25,6 @@ export default function SignInPage() {
     e.preventDefault();
     const response = await signIn(user);
     if (response) {
-      console.log(response);
-
       updateIsAuthenticated(true);
       updateUsername(response.username);
       navigate("/trips");

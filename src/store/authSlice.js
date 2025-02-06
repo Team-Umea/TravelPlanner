@@ -10,7 +10,6 @@ const initialState = {
       const name = JSON.parse(localStorage.getItem(USERNAME_LOCALSTORAGE_KEY));
       return name || "";
     } catch (error) {
-      console.error(error);
       return "";
     }
   })(),

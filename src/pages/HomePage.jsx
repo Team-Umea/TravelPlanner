@@ -9,6 +9,10 @@ import SignUpPage from "./SignUpPage";
 import SignInPage from "./SignInPage";
 
 export default function HomePage() {
-  // return <SignUpPage />;
-  return <SignInPage />;
+  return (
+    <>
+      <SignUpPage />
+      <SignInPage />
+    </>
+  );
 }
