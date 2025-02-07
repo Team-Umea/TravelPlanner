@@ -1,10 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { USERNAME_LOCALSTORAGE_KEY } from "../constants/constants";
+import { AUTH_SESSIONSTORAGE_KEY, USERNAME_LOCALSTORAGE_KEY } from "../constants/constants";
 
 const initialState = {
   status: "idle",
   error: "",
-  isAuthenticated: false,
+  isAuthenticated: (() => {
+    try {
+      const auth = JSON.parse(sessionStorage.getItem(AUTH_SESSIONSTORAGE_KEY));
+      return auth || false;
+    } catch (error) {
+      return false;
+    }
+  })(),
   username: (() => {
     try {
       const name = JSON.parse(localStorage.getItem(USERNAME_LOCALSTORAGE_KEY));
@@ -26,7 +33,10 @@ const authSlice = createSlice({
       state.error = action.payload;
     },
     setIsAuthenticated(state, action) {
-      state.isAuthenticated = action.payload;
+      if (action.payload) {
+        state.isAuthenticated = action.payload;
+        sessionStorage.setItem(AUTH_SESSIONSTORAGE_KEY, action.payload);
+      }
     },
     setUsername(state, action) {
       if (action.payload) {
