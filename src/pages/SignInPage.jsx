@@ -52,7 +52,7 @@ export default function SignInPage() {
       <div className="mt-4">
         <PrimaryBtn btnText="Sign In" type="submit" icon={<IoIosArrowRoundForward size={30} />} />
       </div>
-      <NavLink to="/sign-in" className="my-[-10px] text-center text-cyan-400">
+      <NavLink to="/sign-up" className="my-[-10px] text-center text-cyan-400">
         Dont't have an account? Sign up here
       </NavLink>
     </AuthForm>

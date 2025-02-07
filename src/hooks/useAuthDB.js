@@ -54,11 +54,9 @@ const useAuthDB = () => {
       const hashedPassword = await bcrypt.hash(user.password, 10);
       const newUser = { ...user, password: hashedPassword, id: generateID(existingUsers) };
 
-      const signUpResponse = await axios.post(DB_USERS_ENDPOINT, newUser);
+      await axios.post(DB_USERS_ENDPOINT, newUser);
 
-      updateStatus("success");
-
-      return signUpResponse;
+      return user;
     } catch (error) {
       updateError("Internal server error");
       updateStatus("error");
@@ -85,7 +83,6 @@ const useAuthDB = () => {
       if (userData) {
         const isPasswordValid = await bcrypt.compare(user.password, userData.password);
         if (isPasswordValid) {
-          updateStatus("success");
           return userData;
         } else {
           console.error("Invalid password");

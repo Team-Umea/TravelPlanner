@@ -1,16 +1,16 @@
 {
   "users": [
     {
-      "id": "0",
-      "username": "test",
-      "email": "test@gmail.com",
-      "password": "1234"
-    },
-    {
       "id": 1,
       "username": "Ozzo",
       "email": "oscar.burman005@gmail.com",
-      "password": "$2a$10$53GwgT4/Eg5mwesveFzfk.Zc2dE68aPj/VrOU7/EnWdOKoHBOPIS6"
+      "password": "$2a$10$l9scjfV6awk9a96r4tYYmePKvngLS6nnT3Tre8PHVkFqIsOp.iRYK"
+    },
+    {
+      "id": 2,
+      "username": "Oscar",
+      "email": "ozzodev05@gmail.com",
+      "password": "$2a$10$aBGSNW8tXvIISoxIIJWmu.9T1woWriz3aGZRyy797s3b.vvUNbnHy"
     }
   ],
   "trips": [

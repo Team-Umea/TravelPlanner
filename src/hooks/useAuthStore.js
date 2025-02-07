@@ -1,6 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
-import { setError, setIsAuthenticated, setStatus, setUsername } from "../store/authSlice";
-import { useEffect } from "react";
+import {
+  setError,
+  setIsAuthenticated,
+  setStatus,
+  setUsername,
+  clearAuth,
+} from "../store/authSlice";
+import { useCallback, useEffect } from "react";
 
 const useAuthStore = (shouldReset) => {
   const dispatch = useDispatch();
@@ -11,7 +17,7 @@ const useAuthStore = (shouldReset) => {
       updateStatus("");
       updateError("");
     }
-  }, []);
+  }, [shouldReset]);
 
   const updateStatus = (status) => {
     dispatch(setStatus(status));
@@ -29,9 +35,9 @@ const useAuthStore = (shouldReset) => {
     dispatch(setUsername(username));
   };
 
-  const clearAuth = () => {
+  const resetAuth = useCallback(() => {
     dispatch(clearAuth());
-  };
+  }, [dispatch]);
 
   return {
     ...authState,
@@ -39,7 +45,7 @@ const useAuthStore = (shouldReset) => {
     updateError,
     updateIsAuthenticated,
     updateUsername,
-    clearAuth,
+    resetAuth,
   };
 };
 
