@@ -7,10 +7,12 @@ const useApi = (url, method, cacheKey, fetchOnRender) => {
       setStatus && setStatus("loading");
       setError && setError("");
 
-      const cachedData = localStorage.getItem(cacheKey);
+      if (cacheKey) {
+        const cachedData = localStorage.getItem(cacheKey);
 
-      if (cachedData) {
-        return cachedData;
+        if (cachedData) {
+          return cachedData;
+        }
       }
 
       const config = {
