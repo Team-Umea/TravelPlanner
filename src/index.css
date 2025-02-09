@@ -26,6 +26,10 @@
   display: none;
 }
 
+::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -46,11 +50,11 @@ main {
   justify-content: center;
   overflow: hidden;
   color: white;
-  background: linear-gradient(180deg, rgb(101, 135, 143) 0%, rgba(8, 15, 15, 1) 100%);
 }
 
 .page-transtion-container {
   width: 100%;
+  height:100%;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
