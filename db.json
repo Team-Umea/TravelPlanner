@@ -1,0 +1,28 @@
+{
+    "users": [
+        {
+            "id": "0",
+            "username": "test",
+            "email": "test@gmail.com",
+            "password": "1234"
+        }
+    ],
+    "trips": [
+        {
+            "id": "0",
+            "user":"test",
+            "from": "Spain",
+            "to": "France",
+            "startDate": "2025-03-10",
+            "endDate": "2025-03-15",
+            "activities": [
+                {
+                    "id": "0",
+                    "activitiy": "Eat dinner",
+                    "place": "At a restaurant",
+                    "when": "2025-03-100"
+                }
+            ]
+        }
+    ]
+}
