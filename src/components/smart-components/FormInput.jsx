@@ -32,7 +32,7 @@ export default function FormInput({
 
   return (
     <div className="flex flex-col gap-y-2 w-full">
-      <label className="text-sky-200 font-medium">{label}</label>
+      <label className="text-sky-600 font-medium">{label}</label>
       <div className="flex w-full border-[1px] border-gray-300 rounded-md p-2">
         <input
           ref={inputRef}
@@ -56,9 +56,9 @@ export default function FormInput({
             onClick={togglePasswordType}
             title={inputType === "text" ? "Hide" : "Show"}>
             {inputType === "text" ? (
-              <AiOutlineEyeInvisible size={24} />
+              <AiOutlineEyeInvisible size={24} color="grey" />
             ) : (
-              <AiOutlineEye size={24} />
+              <AiOutlineEye size={24} color="grey" />
             )}
           </button>
         )}

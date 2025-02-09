@@ -16,7 +16,7 @@ export default function NavbarBtn({ type = "button", btnText, fontSize = "base",
           {icon}
         </div>
       )}
-      <p className={`text-${fontSize} whitespace-nowrap text-white`}>{btnText}</p>
+      <p className={`text-${fontSize} whitespace-nowrap`}>{btnText}</p>
     </button>
   );
 }
