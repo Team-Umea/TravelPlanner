@@ -1,11 +1,17 @@
 import axios from "axios";
 import { useEffect } from "react";
 
-const useApi = (url, method, fetchOnRender) => {
+const useApi = (url, method, cacheKey, fetchOnRender) => {
   const callApi = async (requestBody, setStatus, setError) => {
     try {
       setStatus && setStatus("loading");
       setError && setError("");
+
+      const cachedData = localStorage.getItem(cacheKey);
+
+      if (cachedData) {
+        return cachedData;
+      }
 
       const config = {
         method,
