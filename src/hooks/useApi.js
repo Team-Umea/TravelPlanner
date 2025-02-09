@@ -2,8 +2,11 @@ import axios from "axios";
 import { useEffect } from "react";
 
 const useApi = (url, method, fetchOnRender) => {
-  const callApi = async (requestBody) => {
+  const callApi = async (requestBody, setStatus, setError) => {
     try {
+      setStatus && setStatus("loading");
+      setError && setError("");
+
       const config = {
         method,
         url,
@@ -13,9 +16,14 @@ const useApi = (url, method, fetchOnRender) => {
         ...(method !== "GET" && { data: requestBody }),
       };
 
-      return await axios(config);
+      const response = await axios(config);
+
+      setStatus && setStatus("success");
+
+      return response;
     } catch (error) {
       console.error(error);
+      setError && setError(error.response?.data.message || error.message);
       return null;
     }
   };
