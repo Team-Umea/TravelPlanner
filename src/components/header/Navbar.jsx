@@ -1,7 +1,8 @@
-import React from "react";
+import React, {useState} from "react";
 import DangerBtn from "../btn/DangerBtn";
 import PrimaryBtn from "../btn/PrimaryBtn";
 import NavbarBtn from "./NavbarBtn.jsx";
+import { Menu, X } from 'lucide-react';
 import { useNavigate, NavLink } from "react-router";
 import { HiArrowLeftEndOnRectangle } from "react-icons/hi2";
 import useAuthStore from "../../hooks/useAuthStore.js";
@@ -15,8 +16,12 @@ import logo from "../../assets/travel-planner-logo.svg";
 export default function Navbar() {
   const navigate = useNavigate();
   const { isAuthenticated, username, resetAuth } = useAuthStore();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  console.log("Username:", username);
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
 
   return (
     <nav className="fixed w-screen bg-black bg-opacity-20">
@@ -63,7 +68,81 @@ export default function Navbar() {
             </li>
           </ul>
         </div>
+        <button
+          onClick={toggleMenu}
+          className="md:hidden p-2 text-gray-700 hover:text-gray-900"
+          aria-label="Toggle menu"
+        >
+          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+        <div className={`
+          fixed top-0 right-0 h-full w-64 text-white bg-gradient-to-b from-cyan-900 to-gray-900 shadow-lg transform transition-transform duration-300 ease-in-out
+          ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}
+          md:hidden z-20
+        `}>
+          <div className="flex justify-end p-4">
+            <button
+              onClick={toggleMenu}
+              className="text-gray-700 hover:text-gray-900"
+              aria-label="Close menu"
+            >
+              <X size={24} />
+            </button>
+          </div>
+          <ul className="flex flex-col p-4 h-max">
+            <li className="mb-4">
+              <NavbarBtn btnText={"Home"} onClick={() => {
+                navigate("/");
+                setIsMenuOpen(false);
+              }} />
+            </li>
+            <li className="mb-4">
+              <NavbarBtn btnText={"Trips"} onClick={() => {
+                navigate("/trips");
+                setIsMenuOpen(false);
+              }} />
+            </li>
+            <li className="mb-4">
+              <NavbarBtn btnText={"FAQ"} onClick={() => {
+                navigate("/faq");
+                setIsMenuOpen(false);
+              }} />
+            </li>
+            <li className="mb-4">
+              <NavbarBtn btnText={"About"} onClick={() => {
+                navigate("/about");
+                setIsMenuOpen(false);
+              }} />
+            </li>
+            <li className='mb-0'>
+            {isAuthenticated ? (
+                <DangerBtn
+                  btnText={"Sign Out"}
+                  onClick={() => resetAuth()}
+                  icon={<HiArrowLeftEndOnRectangle size={19} />}
+                />
+              ) : (
+                <PrimaryBtn
+                  btnText={"Sign In"}
+                  onClick={() => navigate("/sign-in")}
+                  icon={<IoIosArrowRoundForward size={24} />}
+                />
+              )}
+            </li>
+          </ul>
+        </div>
+
+        
+        {isMenuOpen && (
+          <div 
+            className="fixed inset-0 bg-black bg-opacity-50 md:hidden z-10"
+            onClick={toggleMenu}
+          />
+        )}
       </div>
     </nav>
   );
 }
+
+
+

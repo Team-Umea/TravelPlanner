@@ -3,7 +3,7 @@
 export default function AboutPage() {
   return (
    <div className="flex items-center w-screen mt-40  text-wrap">
-    <div className="mx-60">
+    <div className="mx-1">
       <h2 className="text-2xl">
         About us
       </h2>
