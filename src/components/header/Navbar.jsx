@@ -59,7 +59,7 @@ export default function Navbar() {
                 />
               ) : (
                 <PrimaryBtn
-                  btnText={"Sing In"}
+                  btnText={"Sign In"}
                   onClick={() => navigate("/sign-in")}
                   icon={<IoIosArrowRoundForward size={24} />}
                 />
