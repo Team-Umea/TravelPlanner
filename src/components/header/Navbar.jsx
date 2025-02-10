@@ -121,7 +121,7 @@ export default function Navbar() {
               {isAuthenticated ? (
                 <DangerBtn
                   btnText={"Sign Out"}
-                  onClick={() => resetAuth()}
+                  onClick={resetAuth}
                   icon={<HiArrowLeftEndOnRectangle size={19} />}
                 />
               ) : (

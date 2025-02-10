@@ -7,7 +7,7 @@ export default function RootLayout() {
   return (
     <>
       <Header />
-      <main className="text-black">
+      <main className="text-black pt-[80px]">
         <PageTransition>
           <Outlet />
         </PageTransition>

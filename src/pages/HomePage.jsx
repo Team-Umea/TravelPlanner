@@ -2,7 +2,6 @@ import React from "react";
 import PrimaryBtn from "../components/btn/PrimaryBtn";
 import SecondaryBtn from "../components/btn/SecondaryBtn";
 import DangerBtn from "../components/btn/DangerBtn";
-import Trip from "../components/trip/TripForm";
 import { IoMdCheckmark } from "react-icons/io";
 import { FaRegTrashCan } from "react-icons/fa6";
 import { IoArrowForwardSharp } from "react-icons/io5";
@@ -10,7 +9,6 @@ import { IoArrowForwardSharp } from "react-icons/io5";
 export default function HomePage() {
   return (
     <>
-      <Trip/>
       <div className="home-page">
         <h1 className="home-page-header">Travel Planer</h1>
         <ul className="home-page-contributor-list">

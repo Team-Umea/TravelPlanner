@@ -1,3 +1,5 @@
+import Trip from "../components/trip/TripForm";
+
 export default function TripsPage() {
-  return <p className="m-auto">Trips Page</p>;
+  return <Trip />;
 }

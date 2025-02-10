@@ -50,6 +50,7 @@ const authSlice = createSlice({
       state.isAuthenticated = false;
       state.username = "";
       localStorage.setItem(USERNAME_LOCALSTORAGE_KEY, "");
+      sessionStorage.setItem(AUTH_SESSIONSTORAGE_KEY, false);
     },
   },
 });
