@@ -38,17 +38,13 @@ export default function Navbar() {
         <div className="hidden w-full md:block md:w-auto" id="navbar-dropdown">
           <ul className="flex flex-col gap-4 font-medium p-4 md:p-0 mt-4 border-0 items-center md:flex-row md:mt-0">
             <li>
-              <NavbarBtn btnText={"Home"} onClick={() => navigate("/")}></NavbarBtn>
-            </li>
-
-            <li>
-              <NavbarBtn btnText={"Trips"} onClick={() => navigate("/trips")}></NavbarBtn>
+              <NavbarBtn btnText={"Trips"} onClick={() => navigate("/trips")} />
             </li>
             <li>
-              <NavbarBtn btnText={"FAQ"} onClick={() => navigate("/faq")}></NavbarBtn>
+              <NavbarBtn btnText={"FAQ"} onClick={() => navigate("/faq")} />
             </li>
             <li>
-              <NavbarBtn btnText={"About"} onClick={() => navigate("/about")}></NavbarBtn>
+              <NavbarBtn btnText={"About"} onClick={() => navigate("/about")} />
             </li>
             <li>
               {isAuthenticated ? (
@@ -81,15 +77,6 @@ export default function Navbar() {
         `}>
           <div className="flex justify-end p-4"></div>
           <ul className="flex flex-col p-4 h-max">
-            <li className="mb-4">
-              <NavbarBtn
-                btnText={"Home"}
-                onClick={() => {
-                  navigate("/");
-                  setIsMenuOpen(false);
-                }}
-              />
-            </li>
             <li className="mb-4">
               <NavbarBtn
                 btnText={"Trips"}
