@@ -5,6 +5,7 @@ import {
   setStatus,
   setUsername,
   clearAuth,
+  setUserID,
 } from "../store/authSlice";
 import { useCallback, useEffect } from "react";
 
@@ -35,6 +36,10 @@ const useAuthStore = (shouldReset) => {
     dispatch(setUsername(username));
   };
 
+  const updateUserID = (userID) => {
+    dispatch(setUserID(userID));
+  };
+
   const resetAuth = useCallback(() => {
     dispatch(clearAuth());
   }, [dispatch]);
@@ -45,6 +50,7 @@ const useAuthStore = (shouldReset) => {
     updateError,
     updateIsAuthenticated,
     updateUsername,
+    updateUserID,
     resetAuth,
   };
 };
