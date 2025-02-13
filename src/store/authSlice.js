@@ -1,5 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { AUTH_SESSIONSTORAGE_KEY, USERNAME_LOCALSTORAGE_KEY } from "../constants/constants";
+import {
+  AUTH_SESSIONSTORAGE_KEY,
+  USERID_LOCALSTORAGE_KEY,
+  USERNAME_LOCALSTORAGE_KEY,
+} from "../constants/constants";
 
 const initialState = {
   status: "idle",
@@ -18,6 +22,14 @@ const initialState = {
       return name || "";
     } catch (error) {
       return "";
+    }
+  })(),
+  userID: (() => {
+    try {
+      const name = JSON.parse(localStorage.getItem(USERID_LOCALSTORAGE_KEY));
+      return name || -1;
+    } catch (error) {
+      return -1;
     }
   })(),
 };
@@ -44,18 +56,26 @@ const authSlice = createSlice({
         localStorage.setItem(USERNAME_LOCALSTORAGE_KEY, action.payload);
       }
     },
+    setUserID(state, action) {
+      if (action.payload) {
+        state.userID = action.payload;
+        localStorage.setItem(USERID_LOCALSTORAGE_KEY, action.payload);
+      }
+    },
     clearAuth(state) {
       state.status = "idle";
       state.error = "";
       state.isAuthenticated = false;
       state.username = "";
+      state.userID = -1;
       localStorage.setItem(USERNAME_LOCALSTORAGE_KEY, "");
+      localStorage.setItem(USERID_LOCALSTORAGE_KEY, "");
       sessionStorage.setItem(AUTH_SESSIONSTORAGE_KEY, false);
     },
   },
 });
 
-export const { setStatus, setError, setIsAuthenticated, setUsername, clearAuth } =
+export const { setStatus, setError, setIsAuthenticated, setUsername, setUserID, clearAuth } =
   authSlice.actions;
 
 export default authSlice.reducer;

@@ -1,32 +1,31 @@
 {
   "users": [
     {
-      "id": 1,
+      "id": "1",
       "username": "Ozzo",
       "email": "oscar.burman005@gmail.com",
-      "password": "$2a$10$l9scjfV6awk9a96r4tYYmePKvngLS6nnT3Tre8PHVkFqIsOp.iRYK"
-    },
-    {
-      "id": 2,
-      "username": "Oscar",
-      "email": "ozzodev05@gmail.com",
-      "password": "$2a$10$aBGSNW8tXvIISoxIIJWmu.9T1woWriz3aGZRyy797s3b.vvUNbnHy"
+      "password": "$2a$10$ho4hyrBShI9mndINOMYL6ux9dRS71brTyKZyolU0Qq3NUDes.DEZO"
     }
   ],
   "trips": [
     {
-      "id": "0",
-      "user": "test",
-      "from": "Spain",
-      "to": "England",
-      "startDate": "2025-03-10",
-      "endDate": "2025-03-15",
-      "activities": [
+      "id": "1",
+      "user": "Ozzo",
+      "trips": [
         {
-          "id": "0",
-          "activitiy": "Eat dinner",
-          "place": "At a restaurant",
-          "when": "2025-03-100"
+          "id": "1",
+          "activities": [
+            {
+              "id": "1",
+              "place": "this is a place",
+              "activity": "my act",
+              "when": "2025-02-12"
+            }
+          ],
+          "to": "hej",
+          "from": "då",
+          "startDate": "2025-03-23",
+          "endDate": "2025-04-23"
         }
       ]
     }
