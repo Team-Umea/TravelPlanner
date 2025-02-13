@@ -5,7 +5,7 @@ export default function AuthForm({ headline, onSubmit, children }) {
   const { status } = useAuthStore(true);
 
   if (status === "loading") {
-    return <HashLoader size={50} color="white" className="m-auto" />;
+    return <HashLoader size={50} color="black" className="m-auto" />;
   }
 
   return (
