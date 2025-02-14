@@ -186,6 +186,30 @@
           "from": "dåxxx",
           "startDate": "2025-03-23",
           "endDate": "2025-04-23"
+        },
+        {
+          "id": "4",
+          "activities": [],
+          "from": "till test",
+          "to": "test",
+          "startDate": "2025-02-14",
+          "endDate": "2025-02-15"
+        },
+        {
+          "id": "5",
+          "activities": [],
+          "from": "trip",
+          "to": "a trip",
+          "startDate": "2025-02-19",
+          "endDate": "2025-02-20"
+        },
+        {
+          "id": "6",
+          "activities": [],
+          "from": "to trip",
+          "to": "new trip",
+          "startDate": "2025-02-14",
+          "endDate": "2025-02-15"
         }
       ]
     }

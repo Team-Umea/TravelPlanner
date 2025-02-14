@@ -2,12 +2,15 @@ import React, { useState, useEffect } from "react";
 import { IoMdCheckmark } from "react-icons/io";
 import PrimaryBtn from "../btn/PrimaryBtn";
 import Input from "./Input";
+import useDB from "../../hooks/useDB";
 
 export default function Trip() {
+  const { addTrip } = useDB();
+
   const formatDate = (date) => {
     const yyyy = date.getFullYear();
-    const mm = String(date.getMonth() + 1).padStart(2, '0'); // Month is zero-based
-    const dd = String(date.getDate()).padStart(2, '0');
+    const mm = String(date.getMonth() + 1).padStart(2, "0"); // Month is zero-based
+    const dd = String(date.getDate()).padStart(2, "0");
     return `${yyyy}-${mm}-${dd}`;
   };
 
@@ -18,8 +21,6 @@ export default function Trip() {
   };
 
   const [trip, setTrip] = useState({
-    id: null,
-    user: null,
     from: "",
     to: "",
     startDate: formatDate(new Date()),
@@ -51,12 +52,12 @@ export default function Trip() {
   useEffect(() => {
     const fetchCountries = async () => {
       try {
-        const response = await fetch('https://restcountries.com/v3.1/all?fields=name');
+        const response = await fetch("https://restcountries.com/v3.1/all?fields=name");
         if (!response.ok) {
-          throw new Error('Network response was not ok');
+          throw new Error("Network response was not ok");
         }
         const data = await response.json();
-        const countryNames = data.map(country => country.name.common);
+        const countryNames = data.map((country) => country.name.common);
         setCountries(countryNames);
       } catch (error) {
         setError(error.message);
@@ -78,11 +79,13 @@ export default function Trip() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Trip data:", trip);
+    addTrip(trip);
   };
 
   return (
-    <form onSubmit={handleSubmit} className="trip-section flex flex-col lg:flex-row items-end justify-center space-x-1 p-4">
+    <form
+      onSubmit={handleSubmit}
+      className="trip-section flex flex-col items-center lg:flex-row items-end justify-center space-x-1 p-4">
       <Input
         className={`w-64 placeholder:text-gray-800`}
         placeholder="Where do you want to travel?"
@@ -113,11 +116,13 @@ export default function Trip() {
         name="endDate"
         type="date"
         value={trip.endDate}
-        min={formatDate(new Date(new Date(trip.startDate).setDate(new Date(trip.startDate).getDate() + 1)))} // Ensure min date for endDate is one day after startDate
+        min={formatDate(
+          new Date(new Date(trip.startDate).setDate(new Date(trip.startDate).getDate() + 1))
+        )}
         onChange={handleChange}
       />
       <PrimaryBtn
-        btnText="Search"
+        btnText="Add trip"
         type="submit"
         icon={<IoMdCheckmark size={24} />}
         width="w-auto"

@@ -54,7 +54,7 @@ export default function ActivityListPage() {
   }
 
   return (
-    <div className="flex flex-col gap-y-10">
+    <div className="grid gird-rows-[auto_1fr]">
       <div className="flex justify-between">
         <h1>Activity list page</h1>
         <div className="flex">
@@ -81,7 +81,7 @@ export default function ActivityListPage() {
           </div>
         </div>
       </div>
-      <ul className="flex flex-col gap-y-4 my-[100px] p-4 w-full">
+      <ul className="flex flex-col gap-y-4 my-[100px] p-4 w-full overflow-y-auto">
         {activities.map((activity) => {
           return (
             <li key={activity.id} className="flex justify-between gap-x-10">
