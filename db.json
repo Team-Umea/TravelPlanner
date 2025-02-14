@@ -17,13 +17,173 @@
           "activities": [
             {
               "id": "1",
-              "place": "this is a place",
-              "activity": "my act",
-              "when": "2025-02-12"
+              "place": "då",
+              "activity": "hej",
+              "when": "a"
+            },
+            {
+              "id": "2",
+              "place": "då",
+              "activity": "hej",
+              "when": "a"
+            },
+            {
+              "id": "3",
+              "place": "då",
+              "activity": "hej",
+              "when": "a"
+            },
+            {
+              "id": "4",
+              "place": "då",
+              "activity": "hej",
+              "when": "a"
+            },
+            {
+              "id": "5",
+              "place": "då",
+              "activity": "hej",
+              "when": "a"
+            },
+            {
+              "id": "6",
+              "place": "då",
+              "activity": "hej",
+              "when": "a"
+            },
+            {
+              "id": "7",
+              "place": "då",
+              "activity": "hej",
+              "when": "a"
+            },
+            {
+              "id": "8",
+              "place": "då",
+              "activity": "hej",
+              "when": "a"
+            },
+            {
+              "id": "9",
+              "place": "då",
+              "activity": "hej",
+              "when": "a"
+            },
+            {
+              "id": "10",
+              "place": "då",
+              "activity": "hej",
+              "when": "a"
+            },
+            {
+              "id": "11",
+              "place": "då",
+              "activity": "hej",
+              "when": "a"
+            },
+            {
+              "id": "12",
+              "place": "då",
+              "activity": "hej",
+              "when": "a"
+            },
+            {
+              "id": "13",
+              "place": "då",
+              "activity": "hej",
+              "when": "a"
+            },
+            {
+              "id": "14",
+              "place": "då",
+              "activity": "hej",
+              "when": "a"
+            },
+            {
+              "id": "15",
+              "place": "då",
+              "activity": "hej",
+              "when": "a"
+            },
+            {
+              "id": "16",
+              "place": "då",
+              "activity": "hej",
+              "when": "a"
+            },
+            {
+              "id": "17",
+              "place": "då",
+              "activity": "hej",
+              "when": "a"
+            },
+            {
+              "id": "18",
+              "place": "då",
+              "activity": "hej",
+              "when": "a"
+            },
+            {
+              "id": "19",
+              "place": "då",
+              "activity": "hej",
+              "when": "a"
+            },
+            {
+              "id": "20",
+              "place": "då",
+              "activity": "xxx",
+              "when": "yyy"
+            },
+            {
+              "id": "21",
+              "place": "då",
+              "activity": "xxx",
+              "when": "yyy"
+            },
+            {
+              "id": "22",
+              "place": "då",
+              "activity": "xxx",
+              "when": "yyy"
+            },
+            {
+              "id": "23",
+              "place": "då",
+              "activity": "xxx",
+              "when": "yyy"
+            },
+            {
+              "id": "24",
+              "place": "då",
+              "activity": "xxx",
+              "when": "yyy"
+            },
+            {
+              "id": "25",
+              "place": "då",
+              "activity": "xxx",
+              "when": "yyy"
             }
           ],
           "to": "hej",
           "from": "då",
+          "startDate": "2025-03-23",
+          "endDate": "2025-04-23"
+        },
+        {
+          "id": "2",
+          "activities": [],
+          "to": "hej",
+          "from": "då",
+          "startDate": "2025-03-23",
+          "endDate": "2025-04-23"
+        },
+        {
+          "id": "3",
+          "activities": [],
+          "to": "hej",
+          "from": "dåxxx",
           "startDate": "2025-03-23",
           "endDate": "2025-04-23"
         }
