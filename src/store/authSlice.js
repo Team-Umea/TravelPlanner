@@ -8,30 +8,9 @@ import {
 const initialState = {
   status: "idle",
   error: "",
-  isAuthenticated: (() => {
-    try {
-      const auth = JSON.parse(sessionStorage.getItem(AUTH_SESSIONSTORAGE_KEY));
-      return auth || false;
-    } catch (error) {
-      return false;
-    }
-  })(),
-  username: (() => {
-    try {
-      const name = JSON.parse(localStorage.getItem(USERNAME_LOCALSTORAGE_KEY));
-      return name || "";
-    } catch (error) {
-      return "";
-    }
-  })(),
-  userID: (() => {
-    try {
-      const name = JSON.parse(localStorage.getItem(USERID_LOCALSTORAGE_KEY));
-      return name || -1;
-    } catch (error) {
-      return -1;
-    }
-  })(),
+  isAuthenticated: sessionStorage.getItem(AUTH_SESSIONSTORAGE_KEY) || false,
+  username: localStorage.getItem(USERNAME_LOCALSTORAGE_KEY),
+  userID: localStorage.getItem(USERID_LOCALSTORAGE_KEY) || -1,
 };
 
 const authSlice = createSlice({

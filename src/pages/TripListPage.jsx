@@ -6,6 +6,7 @@ import SecondaryBtn from "../components/btn/SecondaryBtn";
 import DangerBtn from "../components/btn/DangerBtn";
 import { FaRegTrashCan } from "react-icons/fa6";
 import { IoSettingsOutline } from "react-icons/io5";
+import { IoIosArrowRoundForward } from "react-icons/io";
 
 export default function TripListPage() {
   const navigate = useNavigate();
@@ -30,6 +31,10 @@ export default function TripListPage() {
     }
   };
 
+  const navigateToTrips = () => {
+    navigate("/trips");
+  };
+
   const navigateToTripDetails = (id) => {
     navigate(`/trips/mytrips/${id}`);
   };
@@ -46,12 +51,21 @@ export default function TripListPage() {
     <div className="flex flex-col gap-y-10">
       <div className="flex justify-between">
         <h1>Trip list page</h1>
-        <div className="w-fit p-2">
-          <DangerBtn
-            btnText="Delete All Trips"
-            onClick={handleDeleteAllTrips}
-            icon={<FaRegTrashCan size={24} />}
-          />
+        <div className="flex gap-x-4 p-2">
+          <div className="w-fit">
+            <SecondaryBtn
+              btnText="Add trip"
+              onClick={navigateToTrips}
+              icon={<IoIosArrowRoundForward size={24} />}
+            />
+          </div>
+          <div className="w-fit">
+            <DangerBtn
+              btnText="Delete All Trips"
+              onClick={handleDeleteAllTrips}
+              icon={<FaRegTrashCan size={24} />}
+            />
+          </div>
         </div>
       </div>
       <ul className="flex flex-col gap-y-4 my-[100px] p-4 w-full">
