@@ -3,6 +3,7 @@ import RootLayout from "../layouts/RootLayout";
 import ProtectedRoute from "../components/dumb-components/ProtectedRoute";
 import { HashLoader } from "react-spinners";
 import { lazy, Suspense } from "react";
+import TripLayout from "../layouts/TripLayout";
 
 const HomePage = lazy(() => import("../pages/HomePage"));
 const AboutPage = lazy(() => import("../pages/AboutPage"));
@@ -46,15 +47,13 @@ const router = createBrowserRouter(
           </Suspense>
         }
       />
-      <Route path="/trips">
+      <Route path="/trips" element={<TripLayout />}>
         <Route
           index
           element={
-            <ProtectedRoute>
-              <Suspense fallback={Loader}>
-                <TripsPage />
-              </Suspense>
-            </ProtectedRoute>
+            <Suspense fallback={Loader}>
+              <TripsPage />
+            </Suspense>
           }
         />
         <Route
