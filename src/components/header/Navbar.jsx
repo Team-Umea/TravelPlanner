@@ -8,10 +8,6 @@ import { HiArrowLeftEndOnRectangle } from "react-icons/hi2";
 import useAuthStore from "../../hooks/useAuthStore.js";
 import { IoIosArrowRoundForward } from "react-icons/io";
 import logo from "../../assets/travel-planner-logo.svg";
-// about trips home
-//kolla om man är inloggad. Är man inte inloggad så ska man tas till landingpage där sign in och och sign up
-//är du inloggad så ska det finnas en sign out
-//url/trips/add-trip
 
 export default function Navbar() {
   const navigate = useNavigate();

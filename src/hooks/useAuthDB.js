@@ -1,11 +1,13 @@
 import axios from "axios";
 import bcrypt from "bcryptjs";
-import { DB_USERS_ENDPOINT } from "../constants/constants";
+import { DB_TRIPS_ENDPOINT, DB_USERS_ENDPOINT } from "../constants/constants";
 import { generateID } from "../utils/utils";
 import useAuthStore from "./useAuthStore";
+import useApi from "./useApi";
 
 const useAuthDB = () => {
-  const { updateError, updateStatus } = useAuthStore();
+  const { updateError, updateStatus, updateUserID } = useAuthStore();
+  const { callApi: addNewTrip } = useApi(`${DB_TRIPS_ENDPOINT}`, "POST");
 
   const signUp = async (user) => {
     try {
@@ -51,10 +53,15 @@ const useAuthDB = () => {
         return null;
       }
 
+      const generatedID = generateID(existingUsers);
+
       const hashedPassword = await bcrypt.hash(user.password, 10);
-      const newUser = { ...user, password: hashedPassword, id: generateID(existingUsers) };
+      const newUser = { ...user, password: hashedPassword, id: generatedID };
 
       await axios.post(DB_USERS_ENDPOINT, newUser);
+      await addNewTrip({ id: generatedID, user: user.username, trips: [] });
+
+      updateUserID(generatedID);
 
       return user;
     } catch (error) {
@@ -83,6 +90,9 @@ const useAuthDB = () => {
       if (userData) {
         const isPasswordValid = await bcrypt.compare(user.password, userData.password);
         if (isPasswordValid) {
+          console.log(userData);
+
+          updateUserID(userData.id);
           return userData;
         } else {
           console.error("Invalid password");
