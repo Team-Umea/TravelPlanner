@@ -1,6 +1,5 @@
 import { createBrowserRouter, createRoutesFromElements, Route } from "react-router";
 import RootLayout from "../layouts/RootLayout";
-import ProtectedRoute from "../components/dumb-components/ProtectedRoute";
 import { HashLoader } from "react-spinners";
 import { lazy, Suspense } from "react";
 import TripLayout from "../layouts/TripLayout";

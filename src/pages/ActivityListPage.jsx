@@ -5,7 +5,9 @@ import { HashLoader } from "react-spinners";
 import DangerBtn from "../components/btn/DangerBtn";
 import { FaRegTrashCan } from "react-icons/fa6";
 import SecondaryBtn from "../components/btn/SecondaryBtn";
+import PrimaryBtn from "../components/btn/PrimaryBtn";
 import { IoSettingsOutline } from "react-icons/io5";
+import { IoIosArrowRoundBack, IoIosArrowRoundForward } from "react-icons/io";
 
 export default function ActivityListPage() {
   const navigate = useNavigate();
@@ -35,6 +37,14 @@ export default function ActivityListPage() {
     navigate(`/trips/mytrips/${tripid}/myactivities/${id}`);
   };
 
+  const navigateToActivities = () => {
+    navigate(`/trips/mytrips/${tripid}/activities`);
+  };
+
+  const navigateToTripDetails = () => {
+    navigate(`/trips/mytrips/${tripid}`);
+  };
+
   if (isLoading) {
     return <HashLoader size={50} color="black" className="m-auto" />;
   }
@@ -47,12 +57,28 @@ export default function ActivityListPage() {
     <div className="flex flex-col gap-y-10">
       <div className="flex justify-between">
         <h1>Activity list page</h1>
-        <div className="w-fit p-2">
-          <DangerBtn
-            btnText="Delete All activities"
-            onClick={handleDeleteAllActivities}
-            icon={<FaRegTrashCan size={24} />}
-          />
+        <div className="flex">
+          <div className="p-2 w-fit">
+            <SecondaryBtn
+              btnText="Go back"
+              onClick={navigateToTripDetails}
+              icon={<IoIosArrowRoundBack size={24} />}
+            />
+          </div>
+          <div className="p-2 w-fit">
+            <SecondaryBtn
+              btnText="Add activity"
+              onClick={navigateToActivities}
+              icon={<IoIosArrowRoundForward size={24} />}
+            />
+          </div>
+          <div className="w-fit p-2">
+            <DangerBtn
+              btnText="Delete All activities"
+              onClick={handleDeleteAllActivities}
+              icon={<FaRegTrashCan size={24} />}
+            />
+          </div>
         </div>
       </div>
       <ul className="flex flex-col gap-y-4 my-[100px] p-4 w-full">
@@ -63,7 +89,7 @@ export default function ActivityListPage() {
               <p>Place {activity.place}</p>
               <p>When {activity.when}</p>
               <div className="w-fit">
-                <SecondaryBtn
+                <PrimaryBtn
                   btnText="Manage activity"
                   onClick={() => navigateToActivityDetails(activity.id)}
                   icon={<IoSettingsOutline />}
