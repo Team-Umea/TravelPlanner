@@ -41,6 +41,7 @@ export default function FormInput({
           name={name}
           placeholder={placeholder}
           min={minValue}
+          max={maxValue}
           maxLength={maxValue}
           minLength={minValue}
           required
