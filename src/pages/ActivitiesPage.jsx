@@ -2,6 +2,7 @@ import React from "react";
 import SecondaryBtn from "../components/btn/SecondaryBtn";
 import { IoIosArrowRoundBack } from "react-icons/io";
 import { useNavigate, useParams } from "react-router";
+import ActivityForm from "../components/activity/ActivityForm";
 
 export default function ActivitiesPage() {
   const navigate = useNavigate();
@@ -12,15 +13,18 @@ export default function ActivitiesPage() {
   };
 
   return (
-    <div className="flex justify-between">
-      <h1>Activities page</h1>
-      <div className="w-fit p-2">
-        <SecondaryBtn
-          btnText="Go back"
-          onClick={navigteToMyActivities}
-          icon={<IoIosArrowRoundBack size={24} />}
-        />
+    <>
+      <div className="flex justify-between">
+        <h1>Activities page</h1>
+        <div className="w-fit p-2">
+          <SecondaryBtn
+            btnText="Go back"
+            onClick={navigteToMyActivities}
+            icon={<IoIosArrowRoundBack size={24} />}
+          />
+        </div>
       </div>
-    </div>
+      <ActivityForm />
+    </>
   );
 }
