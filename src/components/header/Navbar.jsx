@@ -3,7 +3,7 @@ import DangerBtn from "../btn/DangerBtn";
 import PrimaryBtn from "../btn/PrimaryBtn";
 import NavbarBtn from "./NavbarBtn.jsx";
 import { Menu, X } from "lucide-react";
-import { useNavigate, NavLink } from "react-router";
+import { useNavigate, NavLink, useLocation } from "react-router";
 import { HiArrowLeftEndOnRectangle } from "react-icons/hi2";
 import useAuthStore from "../../hooks/useAuthStore.js";
 import { IoIosArrowRoundForward } from "react-icons/io";
@@ -19,7 +19,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="fixed w-screen bg-slate-300">
+    <nav className="fixed w-screen bg-transparent text-black z-[100]">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <NavLink to="/" className="flex flex-col items-sttart space-x-3 rtl:space-x-reverse">
           <div className="flex gap-x-2">
