@@ -6,6 +6,8 @@ import useTripStore from "../hooks/useTripStore";
 import SecondaryBtn from "../components/btn/SecondaryBtn";
 import { IoIosArrowRoundForward, IoIosArrowRoundBack } from "react-icons/io";
 import useImageApi from "../hooks/useImageApi";
+import useWeatherApi from "../hooks/useWeatherApi";
+import WeatherBadge from "../components/trip/WeatherBadge";
 
 export default function TripDetailsPage() {
   const navigate = useNavigate();
@@ -14,9 +16,11 @@ export default function TripDetailsPage() {
   const { updateTrip } = useTripStore();
   const { getTrip } = useDB();
   const { fetchImages } = useImageApi();
+  const { fetchWeatherData } = useWeatherApi();
   const [currentTrip, setCurrentTrip] = useState();
   const [isLoading, setIsLoading] = useState();
   const [images, setImages] = useState([]);
+  const [weatherData, setWeatherData] = useState();
 
   useEffect(() => {
     (async () => {
@@ -31,18 +35,16 @@ export default function TripDetailsPage() {
           const photos = imagesResponse.photos.map((image) => image.src.portrait);
           setImages(photos);
         }
+
+        const weatherResponse = await fetchWeatherData(tripResponse.to);
+        setWeatherData({
+          location: weatherResponse.location.name,
+          condition: weatherResponse.current.condition.text,
+          temp: weatherResponse.current.temp_c,
+          feelsLike: weatherResponse.current.feelslike_c,
+        });
       }
       setIsLoading(false);
-    })();
-  }, []);
-
-  useEffect(() => {
-    (async () => {
-      const imagesResponse = response.photos;
-      if (imagesResponse) {
-        const photos = imagesResponse.map((image) => image.src.original);
-        setImages(photos);
-      }
     })();
   }, []);
 
@@ -69,13 +71,18 @@ export default function TripDetailsPage() {
     <>
       {currentTrip && (
         <div>
-          <p>Trips details page</p>
-          <div className="p-2 w-fit">
-            <SecondaryBtn
-              btnText="Go back"
-              onClick={navigateToTripsListPage}
-              icon={<IoIosArrowRoundBack size={24} />}
-            />
+          <div className="flex justify-between">
+            <div>
+              <p>Trips details page</p>
+              <div className="p-2 w-fit">
+                <SecondaryBtn
+                  btnText="Go back"
+                  onClick={navigateToTripsListPage}
+                  icon={<IoIosArrowRoundBack size={24} />}
+                />
+              </div>
+            </div>
+            <WeatherBadge weatherData={weatherData} />
           </div>
           <div>
             <p>To: {currentTrip.to}</p>
