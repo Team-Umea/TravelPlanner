@@ -1,11 +1,12 @@
 import axios from "axios";
+import { PEXELS_API_KEY } from "../constants/constants";
 
-const useImageApi = (query) => {
-  const fetchImages = async () => {
+const useImageApi = () => {
+  const fetchImages = async (query) => {
     try {
       const response = await axios.get("https://api.pexels.com/v1/search", {
         headers: {
-          Authorization: API_KEY,
+          Authorization: PEXELS_API_KEY,
         },
         params: {
           query,

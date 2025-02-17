@@ -5,3 +5,5 @@ export const DB_TRIPS_ENDPOINT = `${DB_URL}/trips`;
 export const USERNAME_LOCALSTORAGE_KEY = "travelPlannerUsername";
 export const USERID_LOCALSTORAGE_KEY = "travelPlannerId";
 export const AUTH_SESSIONSTORAGE_KEY = "travelPlannerAuth";
+
+export const PEXELS_API_KEY = "aKblW9tu4M1bLGQj65pY7oLTdbBNL4laiYgmOxLBmGkdFETaJC0DJPHM";
