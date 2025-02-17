@@ -4,29 +4,51 @@ import { HashLoader } from "react-spinners";
 import useDB from "../hooks/useDB";
 import useTripStore from "../hooks/useTripStore";
 import SecondaryBtn from "../components/btn/SecondaryBtn";
-import { IoIosArrowRoundForward } from "react-icons/io";
+import { IoIosArrowRoundForward, IoIosArrowRoundBack } from "react-icons/io";
+import useImageApi from "../hooks/useImageApi";
 
 export default function TripDetailsPage() {
   const navigate = useNavigate();
   const location = useLocation();
   const { tripid } = useParams();
   const { updateTrip } = useTripStore();
-  const { getTrip, editTrip, deleteTrip } = useDB();
+  const { getTrip } = useDB();
+  const { fetchImages } = useImageApi();
   const [currentTrip, setCurrentTrip] = useState();
   const [isLoading, setIsLoading] = useState();
+  const [images, setImages] = useState([]);
 
   useEffect(() => {
     (async () => {
       setIsLoading(true);
-      const response = await getTrip(tripid);
-      if (response) {
-        setCurrentTrip(response);
-        updateTrip(response);
-        //also update global state trip with the current trip on mount
+      const tripResponse = await getTrip(tripid);
+      if (tripResponse) {
+        setCurrentTrip(tripResponse);
+        updateTrip(tripResponse);
+        const imagesResponse = await fetchImages(tripResponse.to);
+
+        if (imagesResponse) {
+          const photos = imagesResponse.photos.map((image) => image.src.portrait);
+          setImages(photos);
+        }
       }
       setIsLoading(false);
     })();
   }, []);
+
+  useEffect(() => {
+    (async () => {
+      const imagesResponse = response.photos;
+      if (imagesResponse) {
+        const photos = imagesResponse.map((image) => image.src.original);
+        setImages(photos);
+      }
+    })();
+  }, []);
+
+  const navigateToTripsListPage = () => {
+    navigate("/trips/mytrips");
+  };
 
   const navigateToActivityListPage = () => {
     navigate(`/trips/mytrips/${tripid}/myactivities`);
@@ -48,6 +70,13 @@ export default function TripDetailsPage() {
       {currentTrip && (
         <div>
           <p>Trips details page</p>
+          <div className="p-2 w-fit">
+            <SecondaryBtn
+              btnText="Go back"
+              onClick={navigateToTripsListPage}
+              icon={<IoIosArrowRoundBack size={24} />}
+            />
+          </div>
           <div>
             <p>To: {currentTrip.to}</p>
             <p>From: {currentTrip.from}</p>
@@ -62,6 +91,15 @@ export default function TripDetailsPage() {
               />
             </div>
           </div>
+          <ul className="grid grid-cols-[repeat(1,1fr)] md:grid-cols-[repeat(2,1fr)] lg:grid-cols-[repeat(4,1fr)] xl:grid-cols-[repeat(5,1fr)] gap-2">
+            {images.map((image, index) => {
+              return (
+                <li key={index}>
+                  <img src={image} />
+                </li>
+              );
+            })}
+          </ul>
         </div>
       )}
     </>
