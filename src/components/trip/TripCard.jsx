@@ -4,7 +4,7 @@ import SecondaryBtn from "../btn/SecondaryBtn";
 import { IoSettingsOutline } from "react-icons/io5";
 import { useNavigate } from "react-router";
 
-export default function TripCard({ trip }) {
+function TripCard({ trip }) {
   const navigate = useNavigate();
 
   return (
@@ -18,10 +18,12 @@ export default function TripCard({ trip }) {
       <div className="w-fit">
         <SecondaryBtn
           btnText="Manage trip"
-          onClick={() => navigate(trip.id)}
+          onClick={() => navigate(`${trip.id}`)}
           icon={<IoSettingsOutline />}
         />
       </div>
     </div>
   );
 }
+
+export default React.memo(TripCard);

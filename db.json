@@ -20,7 +20,14 @@
       "trips": [
         {
           "id": "2",
-          "activities": [],
+          "activities": [
+            {
+              "id": "1",
+              "place": "out",
+              "activity": "eat",
+              "when": "2025-03-30"
+            }
+          ],
           "from": "France",
           "to": "Brazil",
           "startDate": "2025-03-30",

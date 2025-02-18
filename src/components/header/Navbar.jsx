@@ -9,7 +9,7 @@ import useAuthStore from "../../hooks/useAuthStore.js";
 import { IoIosArrowRoundForward } from "react-icons/io";
 import logo from "../../assets/travel-planner-logo.svg";
 
-export default function Navbar() {
+function Navbar() {
   const navigate = useNavigate();
   const location = useLocation();
   const { isAuthenticated, username, resetAuth } = useAuthStore();
@@ -130,3 +130,5 @@ export default function Navbar() {
     </nav>
   );
 }
+
+export default React.memo(Navbar);
