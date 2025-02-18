@@ -80,7 +80,7 @@ export default function TripDetailsPage() {
     }
   }, [currentTrip]);
 
-  const handleTripDataChnage = (e) => {
+  const handleTripDataChange = (e) => {
     const { name, value } = e.target;
     setCurrentTrip((prev) => ({ ...prev, [name]: value }));
     if (tripDataUpdated) {
@@ -158,14 +158,14 @@ export default function TripDetailsPage() {
               label="Update destination"
               placeholder={currentTrip.to}
               name="to"
-              onChange={handleTripDataChnage}
+              onChange={handleTripDataChange}
               onSubmit={handleUpdateTripData}
             />
             <UpdateForm
               label="Update origin"
               placeholder={currentTrip.from}
               name="from"
-              onChange={handleTripDataChnage}
+              onChange={handleTripDataChange}
               onSubmit={handleUpdateTripData}
             />
             <UpdateForm
@@ -175,7 +175,7 @@ export default function TripDetailsPage() {
               name="startDate"
               value={currentTrip.startDate}
               min={formatDate(new Date())}
-              onChange={handleTripDataChnage}
+              onChange={handleTripDataChange}
               onSubmit={handleUpdateTripData}
             />
             <UpdateForm
@@ -185,7 +185,7 @@ export default function TripDetailsPage() {
               name="endDate"
               value={currentTrip.endDate}
               min={minEndDate}
-              onChange={handleTripDataChnage}
+              onChange={handleTripDataChange}
               onSubmit={handleUpdateTripData}
             />
           </div>

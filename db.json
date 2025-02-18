@@ -44,24 +44,6 @@
           "id": "1",
           "activities": [
             {
-              "id": "1",
-              "place": "sad",
-              "activity": "asd",
-              "when": "2025-02-18"
-            },
-            {
-              "id": "2",
-              "place": "s",
-              "activity": "s",
-              "when": "2025-02-18"
-            },
-            {
-              "id": "3",
-              "place": "asdasdasdasd",
-              "activity": "asdasdasdasd",
-              "when": "2025-02-18"
-            },
-            {
               "id": "4",
               "place": "asdad",
               "activity": "asda",
