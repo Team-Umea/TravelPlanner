@@ -46,12 +46,17 @@ export default function TripDetailsPage() {
           }
 
           const weatherResponse = await fetchWeatherData(tripResponse.to);
-          setWeatherData({
-            location: weatherResponse.location.name,
-            condition: weatherResponse.current.condition.text,
-            temp: weatherResponse.current.temp_c,
-            feelsLike: weatherResponse.current.feelslike_c,
-          });
+          if(weatherResponse){
+            setWeatherData({
+              location: weatherResponse.location.name,
+              condition: weatherResponse.current.condition.text,
+              temp: weatherResponse.current.temp_c,
+              feelsLike: weatherResponse.current.feelslike_c,
+            });
+          }else{
+            setWeatherData(null)
+          }
+          
         }
         setIsLoading(false);
         setTripDataUpdated(false);
@@ -146,7 +151,7 @@ export default function TripDetailsPage() {
             </div>
           </div>
           <div className="mt-8 mb-20">
-            <WeatherBadge weatherData={weatherData} />
+            {weatherData &&<WeatherBadge weatherData={weatherData} />}
           </div>
           <div className="flex flex-col items-center gap-y-10 m-auto mb-[100px] w-[90%] max-w-[400px]">
             <UpdateForm

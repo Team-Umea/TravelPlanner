@@ -5,6 +5,12 @@
       "username": "Ozzo",
       "email": "oscar.burman005@gmail.com",
       "password": "$2a$10$ho4hyrBShI9mndINOMYL6ux9dRS71brTyKZyolU0Qq3NUDes.DEZO"
+    },
+    {
+      "id": "2",
+      "username": "asda",
+      "email": "asd@asd.asd",
+      "password": "$2a$10$FPqW9LOCyjza6cDHuIJQQ.rUivdsrwNcrDhbtuiLkXzG1qvaZJ5B6"
     }
   ],
   "trips": [
@@ -25,6 +31,71 @@
           "activities": [],
           "from": "India",
           "to": "Sweden",
+          "startDate": "2025-02-18",
+          "endDate": "2025-02-19"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "user": "asda",
+      "trips": [
+        {
+          "id": "1",
+          "activities": [
+            {
+              "id": "1",
+              "place": "sad",
+              "activity": "asd",
+              "when": "2025-02-18"
+            },
+            {
+              "id": "2",
+              "place": "s",
+              "activity": "s",
+              "when": "2025-02-18"
+            },
+            {
+              "id": "3",
+              "place": "asdasdasdasd",
+              "activity": "asdasdasdasd",
+              "when": "2025-02-18"
+            },
+            {
+              "id": "4",
+              "place": "asdad",
+              "activity": "asda",
+              "when": "2025-02-18"
+            },
+            {
+              "id": "5",
+              "place": "asdasd",
+              "activity": "asdasd",
+              "when": "2025-02-18"
+            },
+            {
+              "id": "6",
+              "place": "asdasd",
+              "activity": "asdasd",
+              "when": "2025-02-18"
+            },
+            {
+              "id": "7",
+              "place": "asdasd",
+              "activity": "asdads",
+              "when": "2025-02-18"
+            }
+          ],
+          "from": "sweden",
+          "to": "goat",
+          "startDate": "2025-02-18",
+          "endDate": "2025-02-19"
+        },
+        {
+          "id": "2",
+          "activities": [],
+          "from": "sweden",
+          "to": "cambodia",
           "startDate": "2025-02-18",
           "endDate": "2025-02-19"
         }
