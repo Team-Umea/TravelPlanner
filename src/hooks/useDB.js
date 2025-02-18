@@ -34,8 +34,6 @@ const useDB = () => {
       return null;
     }
 
-    console.log(trip);
-
     const upatedActivities = [
       ...trip.activities,
       { id: generateID(trip.activities), ...newActivity },

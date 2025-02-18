@@ -12,19 +12,22 @@ import OutlineBtn from "../components/btn/OutlineBtn";
 import ActivityCountBadge from "../components/activity/ActivityCountBadge";
 import DangerBtn from "../components/btn/DangerBtn";
 import { FaRegTrashCan } from "react-icons/fa6";
+import UpdateForm from "../components/smart-components/UpdateForm";
+import { formatDate, getEndDate } from "../utils/utils";
 
 export default function TripDetailsPage() {
   const navigate = useNavigate();
   const location = useLocation();
   const { tripid } = useParams();
   const { updateTrip } = useTripStore();
-  const { getTrip, deleteTrip } = useDB();
+  const { getTrip, deleteTrip, editTrip } = useDB();
   const { fetchImages } = useImageApi();
   const { fetchWeatherData } = useWeatherApi();
   const [currentTrip, setCurrentTrip] = useState();
   const [isLoading, setIsLoading] = useState();
   const [images, setImages] = useState([]);
   const [weatherData, setWeatherData] = useState();
+  const [minEndDate, setMinEndDate] = useState();
 
   useEffect(() => {
     (async () => {
@@ -51,6 +54,36 @@ export default function TripDetailsPage() {
       setIsLoading(false);
     })();
   }, []);
+
+  useEffect(() => {
+    if (currentTrip && currentTrip.startDate) {
+      const startDate = new Date(currentTrip.startDate);
+      const endDate = new Date(currentTrip.endDate);
+
+      setMinEndDate(getEndDate(currentTrip.startDate));
+
+      if (startDate >= endDate) {
+        setCurrentTrip((prev) => ({
+          ...prev,
+          endDate: getEndDate(currentTrip.startDate),
+        }));
+      }
+    }
+  }, [currentTrip]);
+
+  const handleTripDataChnage = (e) => {
+    const { name, value } = e.target;
+    setCurrentTrip((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleUpdateTripData = async () => {
+    await editTrip({
+      to: currentTrip.to,
+      from: currentTrip.from,
+      startDate: currentTrip.startDate,
+      endDate: currentTrip.endDate,
+    });
+  };
 
   const handleDeleteTrip = async () => {
     const response = await deleteTrip();
@@ -106,6 +139,42 @@ export default function TripDetailsPage() {
           </div>
           <div className="mt-8 mb-20">
             <WeatherBadge weatherData={weatherData} />
+          </div>
+          <div className="flex flex-col items-center gap-y-10 m-auto mb-[100px] w-[90%] max-w-[400px]">
+            <UpdateForm
+              label="Update destination"
+              placeholder={currentTrip.to}
+              name="to"
+              onChange={handleTripDataChnage}
+              onSubmit={handleUpdateTripData}
+            />
+            <UpdateForm
+              label="Update origin"
+              placeholder={currentTrip.from}
+              name="from"
+              onChange={handleTripDataChnage}
+              onSubmit={handleUpdateTripData}
+            />
+            <UpdateForm
+              label="Update start date"
+              type="date"
+              placeholder={currentTrip.startDate}
+              name="startDate"
+              value={currentTrip.startDate}
+              min={formatDate(new Date())}
+              onChange={handleTripDataChnage}
+              onSubmit={handleUpdateTripData}
+            />
+            <UpdateForm
+              label="Update destination"
+              type="date"
+              placeholder={currentTrip.endDate}
+              name="endDate"
+              value={currentTrip.endDate}
+              min={minEndDate}
+              onChange={handleTripDataChnage}
+              onSubmit={handleUpdateTripData}
+            />
           </div>
           <ul className="grid grid-cols-[repeat(1,1fr)] md:grid-cols-[repeat(2,1fr)] lg:grid-cols-[repeat(4,1fr)] xl:grid-cols-[repeat(5,1fr)] gap-2">
             {images.map((image, index) => {
