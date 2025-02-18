@@ -24,20 +24,24 @@ export default function Navbar() {
   return (
     <nav
       style={{ backgroundColor: !isHomePage ? "#cbd5e1" : "transparent" }}
-      className="fixed w-screen text-black z-[100]">
+      className="fixed w-screen text-white z-[100]">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <NavLink to="/" className="flex flex-col items-sttart space-x-3 rtl:space-x-reverse">
           <div className="flex gap-x-2">
             <img src={logo} className="h-8" alt="Logo" />
-            <span className="self-center text-2xl font-semibold whitespace-nowrap">
+            <span className="self-center text-2xl font-semibold whitespace-nowrap drop-shadow-[0_0_1px_rgba(0,0,0,1)] tracking-wider">
               Travel Planner
             </span>
           </div>
-          {isAuthenticated && <p>Logged in as {username}</p>}
+          {isAuthenticated && (
+            <p className="text-white drop-shadow-[0_0_1px_rgba(0,0,0,1)] tracking-wider">
+              Logged in as {username}
+            </p>
+          )}
         </NavLink>
 
         <div className="hidden w-full md:block md:w-auto" id="navbar-dropdown">
-          <ul className="flex flex-col gap-4 font-medium p-4 md:p-0 mt-4 border-0 items-center md:flex-row md:mt-0">
+          <ul className="flex flex-col gap-4 font-medium p-4 md:p-0 mt-4 border-0 items-center md:flex-row md:mt-0 ">
             <li>
               <NavbarBtn btnText={"Trips"} onClick={() => navigate("/trips")} />
             </li>
