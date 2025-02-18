@@ -10,13 +10,15 @@ import useWeatherApi from "../hooks/useWeatherApi";
 import WeatherBadge from "../components/trip/WeatherBadge";
 import OutlineBtn from "../components/btn/OutlineBtn";
 import ActivityCountBadge from "../components/activity/ActivityCountBadge";
+import DangerBtn from "../components/btn/DangerBtn";
+import { FaRegTrashCan } from "react-icons/fa6";
 
 export default function TripDetailsPage() {
   const navigate = useNavigate();
   const location = useLocation();
   const { tripid } = useParams();
   const { updateTrip } = useTripStore();
-  const { getTrip } = useDB();
+  const { getTrip, deleteTrip } = useDB();
   const { fetchImages } = useImageApi();
   const { fetchWeatherData } = useWeatherApi();
   const [currentTrip, setCurrentTrip] = useState();
@@ -50,6 +52,13 @@ export default function TripDetailsPage() {
     })();
   }, []);
 
+  const handleDeleteTrip = async () => {
+    const response = await deleteTrip();
+    if (response) {
+      navigate("/trips/mytrips");
+    }
+  };
+
   const isMyActivityListPage = location.pathname.includes("myactivities");
   const isActivityPage = location.pathname.includes("activities");
 
@@ -75,7 +84,7 @@ export default function TripDetailsPage() {
               </h2>
               <ActivityCountBadge activities={currentTrip.activities.length} />
             </div>
-            <div className="flex flex-col md:flex-row items-end md:items-start gap-4 p-2 py-6">
+            <div className="flex flex-col md:grid md:grid-cols-[1fr_1fr] gap-4 p-2 py-6">
               <OutlineBtn
                 btnText="See trips"
                 onClick={() => navigate("/trips/mytrips")}
@@ -86,6 +95,13 @@ export default function TripDetailsPage() {
                 onClick={() => navigate(`/trips/mytrips/${tripid}/myactivities`)}
                 icon={<IoIosArrowRoundForward size={24} />}
               />
+              <div className="md:col-span-2">
+                <DangerBtn
+                  btnText="Delete trip"
+                  onClick={handleDeleteTrip}
+                  icon={<FaRegTrashCan size={20} />}
+                />
+              </div>
             </div>
           </div>
           <div className="mt-8 mb-20">

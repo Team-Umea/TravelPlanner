@@ -13,25 +13,9 @@
       "user": "Ozzo",
       "trips": [
         {
-          "id": "1",
-          "activities": [],
-          "from": "Spain",
-          "to": "Sweden",
-          "startDate": "2025-02-18",
-          "endDate": "2025-02-19"
-        },
-        {
           "id": "2",
           "activities": [],
           "from": "France",
-          "to": "Sweden",
-          "startDate": "2025-02-18",
-          "endDate": "2025-02-19"
-        },
-        {
-          "id": "3",
-          "activities": [],
-          "from": "USA",
           "to": "Sweden",
           "startDate": "2025-02-18",
           "endDate": "2025-02-19"
