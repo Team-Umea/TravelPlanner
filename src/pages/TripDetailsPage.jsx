@@ -9,6 +9,7 @@ import useImageApi from "../hooks/useImageApi";
 import useWeatherApi from "../hooks/useWeatherApi";
 import WeatherBadge from "../components/trip/WeatherBadge";
 import OutlineBtn from "../components/btn/OutlineBtn";
+import ActivityCountBadge from "../components/activity/ActivityCountBadge";
 
 export default function TripDetailsPage() {
   const navigate = useNavigate();
@@ -49,14 +50,6 @@ export default function TripDetailsPage() {
     })();
   }, []);
 
-  const navigateToTripsListPage = () => {
-    navigate("/trips/mytrips");
-  };
-
-  const navigateToActivityListPage = () => {
-    navigate(`/trips/mytrips/${tripid}/myactivities`);
-  };
-
   const isMyActivityListPage = location.pathname.includes("myactivities");
   const isActivityPage = location.pathname.includes("activities");
 
@@ -73,31 +66,30 @@ export default function TripDetailsPage() {
       {currentTrip && (
         <div>
           <div className="flex justify-between">
-            <div>
-              <p>Trips details page</p>
-              <div className="p-2 w-fit">
-                <OutlineBtn
-                  btnText="Go back"
-                  onClick={navigateToTripsListPage}
-                  icon={<IoIosArrowRoundBack size={24} color="black" />}
-                />
-              </div>
+            <div className="flex flex-col gap-y-1 p-4">
+              <h1 className="text-2xl font-semibold ">
+                {currentTrip.from} - {currentTrip.to}
+              </h1>
+              <h2>
+                {currentTrip.startDate} - {currentTrip.endDate}
+              </h2>
+              <ActivityCountBadge activities={currentTrip.activities.length} />
             </div>
-            <WeatherBadge weatherData={weatherData} />
-          </div>
-          <div>
-            <p>To: {currentTrip.to}</p>
-            <p>From: {currentTrip.from}</p>
-            <p>Start date: {currentTrip.startDate}</p>
-            <p>End date: {currentTrip.endDate}</p>
-            <p>Number of activities: {currentTrip.activities.length}</p>
-            <div className="p-2 w-fit">
+            <div className="flex flex-col md:flex-row items-end md:items-start gap-4 p-2 py-6">
+              <OutlineBtn
+                btnText="See trips"
+                onClick={() => navigate("/trips/mytrips")}
+                icon={<IoIosArrowRoundBack size={24} color="black" />}
+              />
               <SecondaryBtn
                 btnText="See activities"
-                onClick={navigateToActivityListPage}
+                onClick={() => navigate(`/trips/mytrips/${tripid}/myactivities`)}
                 icon={<IoIosArrowRoundForward size={24} />}
               />
             </div>
+          </div>
+          <div className="mt-8 mb-20">
+            <WeatherBadge weatherData={weatherData} />
           </div>
           <ul className="grid grid-cols-[repeat(1,1fr)] md:grid-cols-[repeat(2,1fr)] lg:grid-cols-[repeat(4,1fr)] xl:grid-cols-[repeat(5,1fr)] gap-2">
             {images.map((image, index) => {
