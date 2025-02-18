@@ -28,32 +28,36 @@ export default function TripDetailsPage() {
   const [images, setImages] = useState([]);
   const [weatherData, setWeatherData] = useState();
   const [minEndDate, setMinEndDate] = useState();
+  const [tripDataUpdated, setTripDataUpdated] = useState(true);
 
   useEffect(() => {
     (async () => {
-      setIsLoading(true);
-      const tripResponse = await getTrip(tripid);
-      if (tripResponse) {
-        setCurrentTrip(tripResponse);
-        updateTrip(tripResponse);
-        const imagesResponse = await fetchImages(tripResponse.to);
+      if (tripDataUpdated) {
+        setIsLoading(true);
+        const tripResponse = await getTrip(tripid);
+        if (tripResponse) {
+          setCurrentTrip(tripResponse);
+          updateTrip(tripResponse);
+          const imagesResponse = await fetchImages(tripResponse.to);
 
-        if (imagesResponse) {
-          const photos = imagesResponse.photos.map((image) => image.src.portrait);
-          setImages(photos);
+          if (imagesResponse) {
+            const photos = imagesResponse.photos.map((image) => image.src.portrait);
+            setImages(photos);
+          }
+
+          const weatherResponse = await fetchWeatherData(tripResponse.to);
+          setWeatherData({
+            location: weatherResponse.location.name,
+            condition: weatherResponse.current.condition.text,
+            temp: weatherResponse.current.temp_c,
+            feelsLike: weatherResponse.current.feelslike_c,
+          });
         }
-
-        const weatherResponse = await fetchWeatherData(tripResponse.to);
-        setWeatherData({
-          location: weatherResponse.location.name,
-          condition: weatherResponse.current.condition.text,
-          temp: weatherResponse.current.temp_c,
-          feelsLike: weatherResponse.current.feelslike_c,
-        });
+        setIsLoading(false);
+        setTripDataUpdated(false);
       }
-      setIsLoading(false);
     })();
-  }, []);
+  }, [tripDataUpdated]);
 
   useEffect(() => {
     if (currentTrip && currentTrip.startDate) {
@@ -74,6 +78,9 @@ export default function TripDetailsPage() {
   const handleTripDataChnage = (e) => {
     const { name, value } = e.target;
     setCurrentTrip((prev) => ({ ...prev, [name]: value }));
+    if (tripDataUpdated) {
+      setTripDataUpdated(false);
+    }
   };
 
   const handleUpdateTripData = async () => {
@@ -83,6 +90,7 @@ export default function TripDetailsPage() {
       startDate: currentTrip.startDate,
       endDate: currentTrip.endDate,
     });
+    setTripDataUpdated(true);
   };
 
   const handleDeleteTrip = async () => {
