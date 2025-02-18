@@ -3,6 +3,7 @@ import SecondaryBtn from "../components/btn/SecondaryBtn";
 import { IoIosArrowRoundBack } from "react-icons/io";
 import { useNavigate, useParams } from "react-router";
 import ActivityForm from "../components/activity/ActivityForm";
+import OutlineBtn from "../components/btn/OutlineBtn";
 
 export default function ActivitiesPage() {
   const navigate = useNavigate();
@@ -17,10 +18,10 @@ export default function ActivitiesPage() {
       <div className="flex justify-between">
         <h1>Activities page</h1>
         <div className="w-fit p-2">
-          <SecondaryBtn
+          <OutlineBtn
             btnText="Go back"
             onClick={navigteToMyActivities}
-            icon={<IoIosArrowRoundBack size={24} />}
+            icon={<IoIosArrowRoundBack size={24} color="black" />}
           />
         </div>
       </div>

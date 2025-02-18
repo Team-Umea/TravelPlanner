@@ -11,19 +11,24 @@ import logo from "../../assets/travel-planner-logo.svg";
 
 export default function Navbar() {
   const navigate = useNavigate();
+  const location = useLocation();
   const { isAuthenticated, username, resetAuth } = useAuthStore();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const isHomePage = location.pathname === "/";
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
   return (
-    <nav className="fixed w-screen bg-transparent text-black z-[100]">
+    <nav
+      style={{ backgroundColor: !isHomePage ? "#cbd5e1" : "transparent" }}
+      className="fixed w-screen text-black z-[100]">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <NavLink to="/" className="flex flex-col items-sttart space-x-3 rtl:space-x-reverse">
           <div className="flex gap-x-2">
-            <img src={logo} className="h-8" alt="Chas Logo" />
+            <img src={logo} className="h-8" alt="Logo" />
             <span className="self-center text-2xl font-semibold whitespace-nowrap">
               Travel Planner
             </span>

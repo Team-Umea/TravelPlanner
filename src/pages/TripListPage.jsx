@@ -7,6 +7,8 @@ import DangerBtn from "../components/btn/DangerBtn";
 import { FaRegTrashCan } from "react-icons/fa6";
 import { IoSettingsOutline } from "react-icons/io5";
 import { IoIosArrowRoundForward } from "react-icons/io";
+import OutlineBtn from "../components/btn/OutlineBtn";
+import TripCard from "../components/trip/TripCard";
 
 export default function TripListPage() {
   const navigate = useNavigate();
@@ -50,39 +52,25 @@ export default function TripListPage() {
   return (
     <div className="grid gird-rows-[auto_1fr]">
       <div className="flex justify-between">
-        <h1>Trip list page</h1>
-        <div className="flex gap-x-4 p-2">
-          <div className="w-fit">
-            <SecondaryBtn
-              btnText="Add trip"
-              onClick={navigateToTrips}
-              icon={<IoIosArrowRoundForward size={24} />}
-            />
-          </div>
-          <div className="w-fit">
-            <DangerBtn
-              btnText="Delete All Trips"
-              onClick={handleDeleteAllTrips}
-              icon={<FaRegTrashCan size={24} />}
-            />
-          </div>
+        <h1 className="text-2xl font-semibold p-4">Your trips</h1>
+        <div className="flex flex-col md:flex-row items-end md:items-center gap-4 p-2">
+          <OutlineBtn
+            btnText="Add trip"
+            onClick={navigateToTrips}
+            icon={<IoIosArrowRoundForward size={24} color="black" />}
+          />
+          <DangerBtn
+            btnText="Delete All Trips"
+            onClick={handleDeleteAllTrips}
+            icon={<FaRegTrashCan size={24} />}
+          />
         </div>
       </div>
-      <ul className="flex flex-col gap-y-4 my-[100px] p-4 w-full overflow-y-auto">
+      <ul className="flex flex-col gap-y-20 my-[100px] p-4 w-full overflow-y-auto">
         {trips.map((trip) => {
           return (
-            <li key={trip.id} className="flex justify-between gap-x-10">
-              <p>To {trip.to}</p>
-              <p>From {trip.from}</p>
-              <p>Start Date {trip.startDate}</p>
-              <p>End Date {trip.endDate}</p>
-              <div className="w-fit">
-                <SecondaryBtn
-                  btnText="Manage trip"
-                  onClick={() => navigateToTripDetails(trip.id)}
-                  icon={<IoSettingsOutline />}
-                />
-              </div>
+            <li key={trip.id}>
+              <TripCard trip={trip} />
             </li>
           );
         })}

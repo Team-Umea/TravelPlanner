@@ -75,7 +75,7 @@ const FAQS = [
 export default function FAQPage() {
   return (
     <div className="grow flex flex-col items-center gap-y-[200px] my-[100px]">
-      <h2 className="text-2xl font-semibold">
+      <h2 className="w-[90%] max-w-[800px] text-2xl text-center font-semibold">
         Frequently Asked Questions: Your Comprehensive Guide to Using Our Travel Planner App
         Effectively
       </h2>

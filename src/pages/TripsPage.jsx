@@ -1,7 +1,7 @@
 import Trip from "../components/trip/TripForm";
-import SecondaryBtn from "../components/btn/SecondaryBtn";
 import { IoIosArrowRoundForward } from "react-icons/io";
 import { useNavigate } from "react-router";
+import OutlineBtn from "../components/btn/OutlineBtn";
 
 export default function TripsPage() {
   const navigate = useNavigate();
@@ -15,10 +15,10 @@ export default function TripsPage() {
       <div className="flex justify-between">
         <h1>Trips page</h1>
         <div className="w-fit p-2">
-          <SecondaryBtn
+          <OutlineBtn
             btnText="See my trips"
             onClick={navigateToMyTrips}
-            icon={<IoIosArrowRoundForward size={24} />}
+            icon={<IoIosArrowRoundForward size={24} color="black" />}
           />
         </div>
       </div>

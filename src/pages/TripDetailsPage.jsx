@@ -8,6 +8,7 @@ import { IoIosArrowRoundForward, IoIosArrowRoundBack } from "react-icons/io";
 import useImageApi from "../hooks/useImageApi";
 import useWeatherApi from "../hooks/useWeatherApi";
 import WeatherBadge from "../components/trip/WeatherBadge";
+import OutlineBtn from "../components/btn/OutlineBtn";
 
 export default function TripDetailsPage() {
   const navigate = useNavigate();
@@ -75,10 +76,10 @@ export default function TripDetailsPage() {
             <div>
               <p>Trips details page</p>
               <div className="p-2 w-fit">
-                <SecondaryBtn
+                <OutlineBtn
                   btnText="Go back"
                   onClick={navigateToTripsListPage}
-                  icon={<IoIosArrowRoundBack size={24} />}
+                  icon={<IoIosArrowRoundBack size={24} color="black" />}
                 />
               </div>
             </div>

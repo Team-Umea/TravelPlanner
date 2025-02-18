@@ -8,18 +8,18 @@ import SecondaryBtn from "../components/btn/SecondaryBtn";
 import PrimaryBtn from "../components/btn/PrimaryBtn";
 import { IoSettingsOutline } from "react-icons/io5";
 import { IoIosArrowRoundBack, IoIosArrowRoundForward } from "react-icons/io";
+import OutlineBtn from "../components/btn/OutlineBtn";
 
 export default function ActivityListPage() {
   const navigate = useNavigate();
   const { tripid, activityid } = useParams();
   const [activities, setActivities] = useState([]);
-  const { getActivities, deleteAllActivities, addActivity } = useDB();
+  const { getActivities, deleteAllActivities } = useDB();
   const [isLoading, setIsLoading] = useState();
 
   useEffect(() => {
     (async () => {
       setIsLoading(true);
-      // await addActivity({ place: "då", activity: "xxx", when: "yyy" });
       const response = await getActivities();
       response && setActivities(response);
       setIsLoading(false);
@@ -59,10 +59,10 @@ export default function ActivityListPage() {
         <h1>Activity list page</h1>
         <div className="flex">
           <div className="p-2 w-fit">
-            <SecondaryBtn
+            <OutlineBtn
               btnText="Go back"
               onClick={navigateToTripDetails}
-              icon={<IoIosArrowRoundBack size={24} />}
+              icon={<IoIosArrowRoundBack size={24} color="black" />}
             />
           </div>
           <div className="p-2 w-fit">

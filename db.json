@@ -15,26 +15,34 @@
         {
           "id": "1",
           "activities": [],
-          "from": "Sweden",
-          "to": "Spain",
-          "startDate": "2025-02-17",
-          "endDate": "2025-02-18"
+          "from": "Spain",
+          "to": "Sweden",
+          "startDate": "2025-02-18",
+          "endDate": "2025-02-19"
         },
         {
           "id": "2",
           "activities": [],
-          "from": "Sweden",
-          "to": "Thailand",
-          "startDate": "2025-02-17",
-          "endDate": "2025-02-18"
+          "from": "France",
+          "to": "Sweden",
+          "startDate": "2025-02-18",
+          "endDate": "2025-02-19"
         },
         {
           "id": "3",
           "activities": [],
-          "from": "Swden",
-          "to": "France",
-          "startDate": "2025-02-17",
-          "endDate": "2025-02-18"
+          "from": "USA",
+          "to": "Sweden",
+          "startDate": "2025-02-18",
+          "endDate": "2025-02-19"
+        },
+        {
+          "id": "4",
+          "activities": [],
+          "from": "India",
+          "to": "Sweden",
+          "startDate": "2025-02-18",
+          "endDate": "2025-02-19"
         }
       ]
     }

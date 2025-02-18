@@ -3,14 +3,14 @@ import { useNavigate, useParams } from "react-router";
 import useDB from "../hooks/useDB";
 import { HashLoader } from "react-spinners";
 import useTripStore from "../hooks/useTripStore";
-import SecondaryBtn from "../components/btn/SecondaryBtn";
 import { IoIosArrowRoundBack } from "react-icons/io";
+import OutlineBtn from "../components/btn/OutlineBtn";
 
 export default function ActivityDetailsPage() {
   const navigate = useNavigate();
   const { tripid, activityid } = useParams();
   const { updateActivity } = useTripStore();
-  const { getActivity, editActivity, deleteActivity } = useDB();
+  const { getActivity } = useDB();
   const [currentActivity, setCurrentActivity] = useState();
   const [isLoading, setIsLoading] = useState();
 
@@ -21,7 +21,6 @@ export default function ActivityDetailsPage() {
       if (response) {
         setCurrentActivity(response);
         updateActivity(response);
-        //also update global state activity with the current activity on mount
       }
       setIsLoading(false);
     })();
@@ -44,10 +43,10 @@ export default function ActivityDetailsPage() {
       <div className="flex justify-between">
         <h1>Activity details page</h1>
         <div className="w-fit p-2">
-          <SecondaryBtn
+          <OutlineBtn
             btnText="Go back"
             onClick={navigateToActivityListPage}
-            icon={<IoIosArrowRoundBack size={24} />}
+            icon={<IoIosArrowRoundBack size={24} color="black" />}
           />
         </div>
       </div>
