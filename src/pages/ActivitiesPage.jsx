@@ -15,8 +15,7 @@ export default function ActivitiesPage() {
 
   return (
     <>
-      <div className="flex justify-between">
-        <h1>Activities page</h1>
+      <div className="flex justify-end">
         <div className="w-fit p-2">
           <OutlineBtn
             btnText="Go back"

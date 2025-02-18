@@ -12,8 +12,7 @@ export default function TripsPage() {
 
   return (
     <>
-      <div className="flex justify-between">
-        <h1>Trips page</h1>
+      <div className="flex justify-end">
         <div className="w-fit p-2">
           <OutlineBtn
             btnText="See my trips"

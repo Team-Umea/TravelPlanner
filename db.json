@@ -99,7 +99,24 @@
     {
       "id": "3",
       "user": "Sebastian",
-      "trips": []
+      "trips": [
+        {
+          "id": "1",
+          "activities": [],
+          "from": "Estonia",
+          "to": "South Georgia",
+          "startDate": "2025-02-04",
+          "endDate": "2025-02-21"
+        },
+        {
+          "id": "2",
+          "activities": [],
+          "from": "Sweden",
+          "to": "Japan",
+          "startDate": "2025-02-18",
+          "endDate": "2025-02-20"
+        }
+      ]
     }
   ]
 }

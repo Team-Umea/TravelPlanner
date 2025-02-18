@@ -2,7 +2,7 @@ import axios from "axios";
 import { PEXELS_API_KEY } from "../constants/constants";
 
 const useImageApi = () => {
-  const fetchImages = async (query) => {
+  const fetchImages = async (query, perPage = 10) => {
     try {
       const response = await axios.get("https://api.pexels.com/v1/search", {
         headers: {
@@ -10,7 +10,7 @@ const useImageApi = () => {
         },
         params: {
           query,
-          per_page: 10,
+          per_page: perPage,
         },
       });
 
@@ -21,7 +21,9 @@ const useImageApi = () => {
     }
   };
 
-  return { fetchImages };
+  const fetchImage = (query) => fetchImages(query, 1);
+
+  return { fetchImages, fetchImage };
 };
 
 export default useImageApi;
