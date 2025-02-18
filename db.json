@@ -11,6 +11,12 @@
       "username": "asda",
       "email": "asd@asd.asd",
       "password": "$2a$10$FPqW9LOCyjza6cDHuIJQQ.rUivdsrwNcrDhbtuiLkXzG1qvaZJ5B6"
+    },
+    {
+      "id": "3",
+      "username": "Sebastian",
+      "email": "sebastian.ritschewald@chasacademy.se",
+      "password": "$2a$10$JJaOzSXbKFrFFaQ0mjRLQOm1afWoj21ellZYN4JY4mPrJ9zzQggqu"
     }
   ],
   "trips": [
@@ -89,6 +95,11 @@
           "endDate": "2025-02-19"
         }
       ]
+    },
+    {
+      "id": "3",
+      "user": "Sebastian",
+      "trips": []
     }
   ]
 }
