@@ -10,7 +10,7 @@ export default function NavbarBtn({ type = "button", btnText, fontSize = "base",
       type={type}
       onClick={handleClick}
       onMouseLeave={(e) => e.target.blur()}
-      className={`block py-4 px-6 bg-transparent hover:bg-white hover:bg-opacity-15 transition-all duration-300 ease border-solid`}>
+      className={`block py-4 px-6 bg-transparent hover:bg-white hover:bg-opacity-15 transition-all duration-300 ease border-solid drop-shadow-[0_0_1px_rgba(0,0,0,1)] tracking-wider`}>
       {icon && (
         <div className="text-white mr-2 transition-transform duration-300 group-hover:translate-x-[5px]">
           {icon}
