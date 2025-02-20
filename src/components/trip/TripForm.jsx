@@ -179,9 +179,10 @@ export default function Trip() {
         className="h-fit"
       />
     </form>
-    {error&&<div class="error">Error: {error}</div>}
+    {error&&<h2 className="text-4xl text-center font-semibold my-6 px-6 text-red-600">Error: {error}</h2>}
 
-    <div className="w-full max-w-[1368px] mt-12 mx-auto">
+    <div className="w-full max-w-[1368px] my-6 px-6 mx-auto">
+      <h2 className="text-2xl text-center font-semibold mb-10 px-6">Popular destinations</h2>
       <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4">
         {images.map((item, index) => (
           <li key={index} className="flex flex-col items-center">
@@ -205,11 +206,6 @@ export default function Trip() {
         ))}
       </ul>
     </div>
-
-
-
-
-
     </>
   );
 }
