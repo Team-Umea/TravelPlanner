@@ -13,7 +13,7 @@ export default function Hero() {
         <video src={ocean} autoPlay loop muted className="w-full h-full object-cover" />
       </div>
       <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[1000] bg-black bg-opacity-50 h-full flex flex-col items-center justify-center">
-        <TextTypingAnimation text="Adventure Awaits: Plan, Explore, Discover!" />
+        <TextTypingAnimation text="Explore the world, one trip at a time." />
         <div className="w-fit mt-10">
           <OutlineWhiteBtn
             btnText="Plan your trip"
