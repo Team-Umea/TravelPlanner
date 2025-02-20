@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { DB_TRIPS_ENDPOINT } from "../constants/constants";
 import useAuthStore from "../hooks/useAuthStore";
 import { generateID } from "../utils/utils";

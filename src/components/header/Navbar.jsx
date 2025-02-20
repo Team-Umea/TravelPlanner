@@ -23,21 +23,20 @@ function Navbar() {
 
   return (
     <nav
-      style={{ backgroundColor: !isHomePage ? "#cbd5e1" : "transparent" }}
-      className="fixed w-screen text-white z-[10000]">
+      style={{
+        backgroundColor: !isHomePage ? "#cbd5e1" : "transparent",
+        color: !isHomePage ? "black" : "white",
+      }}
+      className="fixed w-screen z-[10000]">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <NavLink to="/" className="flex flex-col items-sttart space-x-3 rtl:space-x-reverse">
           <div className="flex gap-x-2">
             <img src={logo} className="h-8" alt="Logo" />
-            <span className="self-center text-2xl font-semibold whitespace-nowrap drop-shadow-[0_0_1px_rgba(0,0,0,1)] tracking-wider">
+            <span className="self-center text-2xl font-semibold whitespace-nowrap tracking-wider">
               Travel Planner
             </span>
           </div>
-          {isAuthenticated && (
-            <p className="text-white drop-shadow-[0_0_1px_rgba(0,0,0,1)] tracking-wider">
-              Logged in as {username}
-            </p>
-          )}
+          {isAuthenticated && <p className="tracking-wider">Logged in as {username}</p>}
         </NavLink>
 
         <div className="hidden w-full md:block md:w-auto" id="navbar-dropdown">
@@ -72,13 +71,21 @@ function Navbar() {
           onClick={toggleMenu}
           className="md:hidden p-2 text-gray-700 hover:text-gray-900 z-[100]"
           aria-label="Toggle menu">
-          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          {isMenuOpen ? (
+            <X size={24} color={`${isHomePage ? "white" : "black"}`} />
+          ) : (
+            <Menu size={24} color={`${isHomePage ? "white" : "black"}`} />
+          )}
         </button>
         <div
+          style={{
+            backgroundColor: !isHomePage ? "#cbd5e1" : "rgba(0,0,0,.3)",
+            color: !isHomePage ? "black" : "white",
+          }}
           className={`
           fixed top-0 right-0 h-full w-64 transform transition-transform duration-300 ease-in-out
           ${isMenuOpen ? "translate-x-0" : "translate-x-full"}
-          md:hidden z-20 bg-slate-300
+          md:hidden z-20
         `}>
           <div className="flex justify-end p-4"></div>
           <ul className="flex flex-col p-4 h-max">
