@@ -115,6 +115,14 @@
           "to": "Japan",
           "startDate": "2025-02-18",
           "endDate": "2025-02-20"
+        },
+        {
+          "id": "3",
+          "activities": [],
+          "from": "Sweden",
+          "to": "Thailand",
+          "startDate": "2025-02-18",
+          "endDate": "2025-02-20"
         }
       ]
     }
