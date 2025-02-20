@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 export default function TextTypingAnimation({ text }) {
   return (
-    <div className="flex flex-wrap justify-center gap-x-1 w-screen text-cyan-400">
+    <div className="flex flex-wrap justify-center gap-x-1 w-screen text-white">
       {text.split(" ").map((el, i) => (
         <motion.span
           initial={{ opacity: 0 }}
